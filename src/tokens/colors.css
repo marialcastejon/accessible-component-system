@@ -1,0 +1,17 @@
+/* src/tokens/colors.css */
+:root {
+  /* Slate Scale */
+  --color-slate-900: #0f172a;
+  --color-slate-800: #1e293b;
+  --color-slate-700: #334155;
+  --color-slate-500: #64748b;
+  --color-slate-400: #94a3b8;
+  --color-slate-300: #cbd5e1;
+  --color-slate-50: #f8fafc;
+
+  /* Sky Scale (Primary Accent) */
+  --color-sky-700: #0369a1;
+  --color-sky-600: #0284c7;
+  --color-sky-400: #38bdf8;
+  --color-sky-300: #7dd3fc;
+}
