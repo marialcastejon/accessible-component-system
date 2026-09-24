@@ -29,6 +29,38 @@ This project bridges the gap between design system architecture in Figma and pro
 | **Secondary** | Default | `#F8FAFC` *(Slate 50)* | `#0F172A` *(Dark Slate)* | `1px` Solid `#CBD5E1` | **17.06:1** (AAA) |
 | **Ghost** | Default | Transparent | `#95A0B7` *(Ghost 700)* | `2px` Offset `#7DD3FC` | **5.56:1** (AA) |
 
+### New Dialog Primitive
+
+The project now includes an accessible dialog component built for design-system workflows and modal confirmations.
+
+Features:
+- `isOpen` control for open/closed state management
+- Escape key handling to dismiss the dialog
+- Focus trap to keep keyboard navigation inside the modal
+- Body scroll lock while the dialog is open
+- Focus restoration back to the triggering element on close
+- Screen-reader-friendly `aria-modal`, `aria-labelledby`, and `aria-describedby`
+- Backdrop click dismissal and close button support
+
+Example usage:
+
+```tsx
+<Dialog
+  isOpen={isDialogOpen}
+  onClose={handleCloseDialog}
+  title="Confirm System Reset"
+  description="This action will revert all design tokens to factory defaults."
+  footerActions={
+    <>
+      <Button variant="ghost" size="md" onClick={handleCloseDialog}>Cancel</Button>
+      <Button variant="primary" size="md" onClick={handleConfirmAction}>Reset Tokens</Button>
+    </>
+  }
+>
+  <p>Are you sure you want to proceed?</p>
+</Dialog>
+```
+
 ---
 
 ## 📂 Repository Structure
@@ -41,15 +73,21 @@ accessible-component-system/
 │   └── 02_accessibility_audit.png
 ├── src/
 │   ├── components/
-│   │   └── Button/
-│   │       ├── Button.tsx    # React + TypeScript Implementation
-│   │       └── Button.css    # Component Token Styling & Keyframes
-│   ├── tokens/
-│   │   └── colors.css        # Centralized CSS Custom Properties
-│   ├── App.tsx               # Interactive Showcase Deck
-│   ├── main.tsx              # Application Root Entry
-│   └── index.css             # Global Resets & Utility Classes (.sr-only)
+│   │   ├── Button/
+│   │   │   ├── Button.tsx    # Button primitive and states
+│   │   │   └── Button.css    # Button styling
+│   │   └── Dialog/
+│   │       ├── Dialog.tsx    # Accessible modal dialog
+│   │       ├── Dialog.css    # Dialog styling
+│   │       ├── Dialog.types.ts
+│   │       └── Dialog.test.tsx
+│   ├── App.css              # App shell and layout styles
+│   ├── App.tsx              # Interactive showcase deck
+│   ├── main.tsx             # Application entry point
+│   └── index.css            # Global resets and base styles
 ├── package.json
+├── vite.config.ts
+├── tsconfig.json
 └── README.md
 ```
 
@@ -78,32 +116,51 @@ Open your browser and navigate to http://localhost:5173 to interact with the com
 
 ## 🛠️ Usage Example
 
-```
+```tsx
 import React from 'react';
 import { Button } from './components/Button/Button';
 
 export const UserActionGroup = () => {
   return (
     <div style={{ display: 'flex', gap: '12px' }}>
-      {/* Primary Action Button */}
-      <Button onClick="{()" size="md" variant="primary"> alert('Confirmed!')}>
+      <Button onClick={() => alert('Confirmed!')} size="md" variant="primary">
         Confirm Order
       </Button>
 
-      {/* Loading State with Screen Reader Announcements */}
       <Button isLoading size="md" variant="primary">
         Processing
       </Button>
 
-      {/* Subtle Ghost Option */}
       <Button size="md" variant="ghost">
         Cancel
       </Button>
     </div>
   );
 };
-
 ```
+
+## ✅ Testing
+
+This project uses Vitest with Testing Library for component-level verification.
+
+Run the tests:
+
+```bash
+npm test
+```
+
+Or run once without watch mode:
+
+```bash
+npx vitest run
+```
+
+The current suite covers the Dialog component behavior, including:
+- open and close state rendering
+- accessibility attributes and labeling
+- Escape key and backdrop dismissal
+- focus trap behavior
+- body scroll lock and restoration
 
 ## ♿ Accessibility Implementation Details
 
