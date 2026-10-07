@@ -67,26 +67,36 @@ Example usage:
 
 ```text
 accessible-component-system/
-├── .github/                 # Workflows & CI checks
-├── Figma-Specs/             # Visual handoff documentation & frame renders
-│   ├── 01_component_tokens.png
-│   └── 02_accessibility_audit.png
+├── .storybook/
+│   ├── main.ts               # Story discovery, framework, and addons
+│   └── preview.tsx           # Global Storybook parameters
+├── public/                   # Static public assets
 ├── src/
 │   ├── components/
 │   │   ├── Button/
-│   │   │   ├── Button.tsx    # Button primitive and states
-│   │   │   └── Button.css    # Button styling
+│   │   │   ├── Button.tsx
+│   │   │   ├── Button.css
+│   │   │   └── Button.stories.tsx
 │   │   └── Dialog/
-│   │       ├── Dialog.tsx    # Accessible modal dialog
-│   │       ├── Dialog.css    # Dialog styling
+│   │       ├── Dialog.tsx
+│   │       ├── Dialog.css
 │   │       ├── Dialog.types.ts
-│   │       └── Dialog.test.tsx
-│   ├── App.css              # App shell and layout styles
-│   ├── App.tsx              # Interactive showcase deck
-│   ├── main.tsx             # Application entry point
-│   └── index.css            # Global resets and base styles
+│   │       ├── Dialog.test.tsx
+│   │       └── Dialog.stories.tsx
+│   ├── tokens/
+│   │   └── colors.css        # Design token definitions
+│   ├── App.tsx
+│   ├── App.css
+│   ├── main.tsx
+│   └── index.css
+├── eslint.config.js
+├── index.html
 ├── package.json
+├── package-lock.json
 ├── vite.config.ts
+├── vitest.shims.d.ts
+├── tsconfig.app.json
+├── tsconfig.node.json
 ├── tsconfig.json
 └── README.md
 ```
@@ -113,6 +123,24 @@ npm run dev
 ```
 
 Open your browser and navigate to http://localhost:5173 to interact with the component library!
+
+## 📚 Storybook
+
+Storybook provides an isolated workspace for previewing and interacting with the component stories. Start it with:
+
+```bash
+npm run storybook
+```
+
+Then open http://localhost:6006. Stories are kept alongside their components (for example, `src/components/Button/Button.stories.tsx`) and include interactive controls for supported component props. The accessibility addon is enabled for reviewing stories.
+
+To create a production-ready static Storybook build, run:
+
+```bash
+npm run build-storybook
+```
+
+The generated site is written to `storybook-static/`.
 
 ## 🛠️ Usage Example
 
