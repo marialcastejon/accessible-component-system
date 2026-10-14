@@ -4,6 +4,8 @@
 
 ![Figma & Component Banner](./Figma-Specs/02_accessibility_audit.png)
 
+[![Storybook](https://img.shields.io/badge/Live_Storybook-Chromatic-FF4785?style=for-the-badge&logo=storybook)](https://6ac61583bda920104181f5e3-pjpvbxvczi.chromatic.com)
+
 ---
 
 ## 💡 Overview
