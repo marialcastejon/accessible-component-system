@@ -11,14 +11,21 @@
     "test": "vitest",
     "test:run": "vitest run",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_dd5384e77dfd494"
   },
   "dependencies": {
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "latest",
     "@eslint/js": "^10.0.1",
+    "@storybook/addon-a11y": "^10.6.1",
+    "@storybook/addon-docs": "^10.6.1",
+    "@storybook/addon-onboarding": "^10.6.1",
+    "@storybook/addon-vitest": "^10.6.1",
+    "@storybook/react-vite": "^10.6.1",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.7",
@@ -26,25 +33,20 @@
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.4",
+    "@vitest/browser-playwright": "5.0.1",
     "@vitest/coverage-v8": "^5.0.1",
+    "chromatic": "^18.11.0",
     "eslint": "^10.8.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.3",
+    "eslint-plugin-storybook": "^10.6.1",
     "globals": "^17.7.0",
     "jsdom": "^30.1.1",
+    "playwright": "latest",
+    "storybook": "^10.6.1",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.65.0",
     "vite": "^8.2.0",
-    "vitest": "^5.0.1",
-    "storybook": "^10.6.1",
-    "@storybook/react-vite": "^10.6.1",
-    "@chromatic-com/storybook": "latest",
-    "@storybook/addon-vitest": "^10.6.1",
-    "@storybook/addon-a11y": "^10.6.1",
-    "@storybook/addon-docs": "^10.6.1",
-    "@storybook/addon-onboarding": "^10.6.1",
-    "eslint-plugin-storybook": "^10.6.1",
-    "@vitest/browser-playwright": "5.0.1",
-    "playwright": "latest"
+    "vitest": "^5.0.1"
   }
 }
